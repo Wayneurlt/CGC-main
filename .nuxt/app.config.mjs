@@ -233,6 +233,6 @@ if (import.meta.hot) {
   })
 }
 
-import cfg0 from "D:/Users/Administrator/Desktop/CGC-main/app.config.ts"
+import cfg0 from "C:/Users/ADMIN/Documents/GITHUB/CGC-main/app.config.ts"
 
 export default /*@__PURE__*/ defuFn(cfg0, inlineConfig)
