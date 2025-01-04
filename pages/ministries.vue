@@ -1,16 +1,16 @@
 <template>
     <AboutNavbar/>
-    <section class="w-full overflow-hidden px-4 py-10 mt-16 lg:mt-24 lg:px-16 2xl:px-48">
+    <section class="w-full overflow-hidden px-4 py-10 mt-16 lg:mt-24 lg:px-16 2xl:px-48 bg-white">
       <div class="mx-auto max-w-7xl">
         <!-- Header Section -->
         <div class="max-w-2xl space-y-4">
           <h2 class="text-2xl lg:text-3xl font-semibold text-[#b70213]">
             Church Ministries
           </h2>
-          <p class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-gray-100">
+          <p class="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-black">
             Engage and grow in faith.
           </p>
-          <p class="text-base lg:text-lg text-slate-700 dark:text-gray-300 max-w-xl">
+          <p class="text-base lg:text-lg text-slate-700 dark:text-gray-700 max-w-xl">
             Our church ministries provide diverse opportunities to connect, serve, and grow spiritually. Join a group that resonates with your journey in faith.
           </p>
           

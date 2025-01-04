@@ -3,8 +3,8 @@
     :class="[ 
       'px-8 py-3 xl:py-4 fixed top-0 w-full z-[1000]',
       {
-        'dark:bg-white bg-satinlinen': isScrolled,
-        'bg-transparent': !isScrolled,
+        'dark:bg-white': isScrolled,
+        'bg-white': !isScrolled,
       },
     ]"
   >
