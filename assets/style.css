@@ -1,5 +1,6 @@
 body {
   @apply  text-black;
+  font-family: "Nunito", sans-serif;
 }
 
 .source-serif {

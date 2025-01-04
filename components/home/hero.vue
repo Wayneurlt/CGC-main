@@ -23,10 +23,10 @@
               Join Us
             </a>
             <a
-              href="/events"
+              href="/ministries"
               class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold bg-white text-[#b70213] rounded-lg shadow border-2 border-[#b70213] hover:bg-[#b70213] hover:text-white transition-all duration-300"
             >
-              Explore Events
+              Ministries
             </a>
           </div>
         </div>
