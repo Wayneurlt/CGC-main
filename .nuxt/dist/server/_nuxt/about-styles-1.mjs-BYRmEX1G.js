@@ -1,0 +1,5 @@
+const about_vue_vue_type_style_index_0_scoped_8dc3140c_lang = ".about-us[data-v-8dc3140c]{color:#333;font-family:Arial,sans-serif;padding:20px}.hero-section[data-v-8dc3140c]{background-color:#f9f9f9;padding:40px 20px;text-align:center}.hero-title[data-v-8dc3140c]{font-size:2.5rem;margin-bottom:10px}.hero-description[data-v-8dc3140c]{font-size:1.2rem;margin-bottom:20px}.contact-section[data-v-8dc3140c],.history-section[data-v-8dc3140c],.leadership-section[data-v-8dc3140c],.mission-section[data-v-8dc3140c],.services-section[data-v-8dc3140c]{margin-bottom:30px}h2[data-v-8dc3140c]{color:#0056b3;font-size:1.8rem;margin-bottom:15px}p[data-v-8dc3140c]{line-height:1.6}.leaders[data-v-8dc3140c]{display:flex;flex-wrap:wrap;gap:20px}.leader[data-v-8dc3140c]{text-align:center;width:200px}.leader-photo[data-v-8dc3140c]{border-radius:50%;height:auto;margin-bottom:10px;width:100%}ul[data-v-8dc3140c]{list-style-type:none;padding:0}ul li[data-v-8dc3140c]{margin-bottom:10px}.contact-section p[data-v-8dc3140c]{line-height:1.8}";
+export {
+  about_vue_vue_type_style_index_0_scoped_8dc3140c_lang as default
+};
+//# sourceMappingURL=about-styles-1.mjs-BYRmEX1G.js.map
