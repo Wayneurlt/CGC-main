@@ -138,7 +138,7 @@
         "./tailwind.config/*"
       ],
       "#app-manifest": [
-        "./manifest/meta/3f895c36-3546-41cf-ac27-0401e6e8f75b"
+        "./manifest/meta/dev.json"
       ],
       "#components": [
         "./components"

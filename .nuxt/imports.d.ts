@@ -43,4 +43,5 @@ export { useUI } from '../node_modules/@nuxt/ui/dist/runtime/composables/useUI';
 export { useColorMode } from '../node_modules/@nuxtjs/color-mode/dist/runtime/composables';
 export { createNotivue, push, updateConfig, startInstance, stopInstance, usePush, useNotivue, useNotivueInstance, useNotifications, useNotivueKeyboard, lightTheme, pastelTheme, materialTheme, darkTheme, slateTheme, filledIcons, outlinedIcons } from 'notivue';
 export { useImage } from '../node_modules/@nuxt/image/dist/runtime/composables';
+export { useNuxtDevTools } from '../node_modules/@nuxt/devtools/dist/runtime/use-nuxt-devtools';
 export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
