@@ -65,8 +65,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import AboutNavbar from '../components/AboutNavbar.vue';
-import HomeFoot from '../components/HomeFoot.vue';
+
 import sunday from "../assets/images/sunday.jpg";
 import teen from "../assets/images/teen.jpg";
 import youth from "../assets/images/youth.jpg";
