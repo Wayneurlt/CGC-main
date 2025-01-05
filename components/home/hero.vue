@@ -17,10 +17,10 @@
           </p>
           <div class="flex items-center justify-center lg:justify-start gap-6">
             <a
-              href="/join"
+              href="/know"
               class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-[#b70213] border border-transparent rounded-md hover:bg-[#99020f] focus:bg-[#99020f]"
             >
-              Join Us
+              Know God
             </a>
             <a
               href="/ministries"
