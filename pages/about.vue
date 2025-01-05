@@ -162,8 +162,8 @@ const churchInfo = {
         <h2 class="text-3xl font-bold text-red-700 text-center mb-12">Our Branches</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div v-for="branch in branches" :key="branch" class="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-semibold text-red-700 mb-3">{{ branch }}</h3>
-            <button class="text-red-700 border border-red-700 px-4 py-2 rounded-md hover:bg-red-700 hover:text-white transition-colors">
+            <h3 class="text-xl font-semibold text-black mb-3">{{ branch }}</h3>
+            <button class="text-black border border-red-700 px-4 py-2 rounded-md hover:bg-red-700 hover:text-white transition-colors">
               Visit Branch
             </button>
           </div>
