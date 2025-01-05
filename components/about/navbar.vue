@@ -31,7 +31,7 @@
     Serve
   </NuxtLink>
         <NuxtLink 
-    to="/about" 
+    to="/serve" 
     class="font-semibold transition-transform transform hover:scale-105"
   >
     About Us
