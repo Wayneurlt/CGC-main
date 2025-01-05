@@ -70,7 +70,7 @@ const churchInfo = {
     </section>
 
     <!-- Leadership Section -->
-    <section class="py-16 bg-white">
+    <!-- <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-red-700 text-center mb-12">Meet Our Leadership</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -81,7 +81,80 @@ const churchInfo = {
           </div>
         </div>
       </div>
+    </section> -->
+
+
+    <section class="bg-white text-black py-12">
+      <div class="container mx-auto px-6 sm:px-12 lg:px-20">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold text-black text-center">
+            
+            <span class="text-red-700">Meet Our Leadership</span>
+          </h2>
+          <p class="mt-2 text-gray-600 text-center">
+           
+          </p>
+        </div>
+
+        <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+          <div
+            class="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-3 md:mt-16 lg:gap-x-12"
+          >
+            <!-- Card 1 -->
+            <div
+              class="group overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
+            >
+              <img
+                class="w-full"
+                src="/assets/images/blank.png"
+                alt="Team Member 1"
+              />
+              <div class="p-4 bg-white text-center">
+                <h3 class="text-lg font-semibold text-gray-900">Pastor John Smith</h3>
+                <p class="text-gray-600">Senior Pastor</p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="group overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
+            >
+              <img
+                class="w-full"
+                src="/assets/images/blank.png"
+                alt="Team Member 2"
+              />
+              <div class="p-4 bg-white text-center">
+                <h3 class="text-lg font-semibold text-gray-900">Jane Smith</h3>
+                <p class="text-gray-600">Youth Ministry Leader</p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="group overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
+            >
+              <img
+                class="w-full"
+                src="/assets/images/blank.png"
+                alt="Team Member 3"
+              />
+              <div class="p-4 bg-white text-center">
+                <h3 class="text-lg font-semibold text-gray-900">
+                  Michael Brown
+                </h3>
+                <p class="text-gray-600">Worship Leader</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       
+      </div>
     </section>
+
+
+
 
     <!-- Branches Section -->
     <section class="py-16 bg-gray-50">
@@ -144,6 +217,7 @@ const churchInfo = {
       </div>
     </section>
   </div>
+  <HomeFoot/>
 </template>
 
 <style scoped>
