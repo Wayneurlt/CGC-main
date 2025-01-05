@@ -1,5 +1,5 @@
 <template>
-  <HomeNavbar/>
+  <HomeNavbar class="bg-white"/>
     <div class="w-full mt-24 bg-white">
       <!-- Ministry Areas Section -->
       <section class="py-16 bg-gray-50">

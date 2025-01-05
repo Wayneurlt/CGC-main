@@ -37,7 +37,7 @@ const churchInfo = {
 </script>
 
 <template>
-  <AboutNavbar />
+  <HomeNavbar class="bg-white"/>
   <div class="min-h-screen mt-24 bg-white">
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-r from-gray-100 to-gray-200 py-16">

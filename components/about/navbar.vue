@@ -25,13 +25,13 @@
 
       <div class="flex items-center gap-5">
         <NuxtLink 
-    to="/about" 
+    to="/serve" 
     class="font-semibold transition-transform transform hover:scale-105"
   >
     Serve
   </NuxtLink>
         <NuxtLink 
-    to="/serve" 
+    to="/about" 
     class="font-semibold transition-transform transform hover:scale-105"
   >
     About Us
