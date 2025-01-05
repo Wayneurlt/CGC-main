@@ -1,6 +1,6 @@
 <template>
   <AboutNavbar/>
-  <section class="w-full overflow-hidden px-4 py-10 mt-16 lg:mt-24 lg:px-16 2xl:px-48 bg-white">
+  <section class="w-full overflow-hidden px-4 py-10 mt-16 lg:mt-20 lg:px-16 2xl:px-48 bg-white">
     <div class="mx-auto max-w-7xl">
       <!-- Header Section -->
       <div class="max-w-2xl space-y-4">
