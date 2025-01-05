@@ -57,28 +57,28 @@
                   <input v-model="formData.personalInfo.firstName" 
                          type="text" 
                          required
-                         class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+                         class="w-full px-4 py-2 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
                 </div>
                 <div>
                   <label class="block text-gray-700 mb-2">Last Name</label>
                   <input v-model="formData.personalInfo.lastName" 
                          type="text" 
                          required
-                         class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+                         class="w-full px-4 py-2 border bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
                 </div>
                 <div>
                   <label class="block text-gray-700 mb-2">Email</label>
                   <input v-model="formData.personalInfo.email" 
                          type="email" 
                          required
-                         class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+                         class="w-full px-4 py-2 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
                 </div>
                 <div>
                   <label class="block text-gray-700 mb-2">Phone</label>
                   <input v-model="formData.personalInfo.phone" 
                          type="tel" 
                          required
-                         class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+                         class="w-full px-4 py-2 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
                 </div>
               </div>
             </div>
@@ -91,7 +91,7 @@
                   <label class="block text-gray-700 mb-2">Membership Status</label>
                   <select v-model="formData.churchInfo.membershipStatus" 
                           required
-                          class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+                          class="w-full px-4 py-2 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
                     <option value="">Select status</option>
                     <option value="member">Member</option>
                     <option value="regular">Regular Attendee</option>
@@ -102,7 +102,7 @@
                   <label class="block text-gray-700 mb-2">How long have you been attending?</label>
                   <input v-model="formData.churchInfo.attendanceDuration" 
                          type="text"
-                         class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+                         class="w-full px-4 py-2 border rounded-md bg-gray-100  focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
                 </div>
               </div>
             </div>
@@ -149,13 +149,13 @@
                 <div>
                   <label class="block text-gray-700 mb-2">Relevant Skills & Experience</label>
                   <textarea v-model="formData.experience.relevantSkills"
-                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent"
+                            class="w-full px-4 py-2 border bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent"
                             rows="4"></textarea>
                 </div>
                 <div>
                   <label class="block text-gray-700 mb-2">Previous Volunteer Experience</label>
                   <textarea v-model="formData.experience.previousVolunteer"
-                            class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent"
+                            class="w-full px-4 py-2 border bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent"
                             rows="4"></textarea>
                 </div>
               </div>
