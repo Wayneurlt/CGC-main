@@ -4,8 +4,8 @@ import { ref } from 'vue';
 const leaders = ref([
   {
     id: 1,
-    name: "Pastor John Smith",
-    role: "Senior Pastor",
+    name: "Evans Mulunji",
+    role: "Bishop",
     photo: "/api/placeholder/200/200"
   },
   {
@@ -206,11 +206,11 @@ const churchInfo = {
             </div>
             <div class="flex items-center">
               <span class="font-semibold w-24">Phone:</span>
-              <span>(123) 456-7890</span>
+              <span>0722636926</span>
             </div>
             <div class="flex items-center">
               <span class="font-semibold w-24">Email:</span>
-              <span>info@ourchurch.com</span>
+              <span>growthcentrechurch@gmail.com</span>
             </div>
           </p>
         </div>
