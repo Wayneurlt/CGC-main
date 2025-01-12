@@ -22,17 +22,11 @@
           <div :class="['flex flex-col md:flex-row gap-12', index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse']">
             <div class="w-full md:w-1/2">
               <img 
-                v-if="step.image"
-                :src="step.image"
+                :src="step.image || defaultImage"
                 :alt="step.title"
                 class="w-full h-[400px] object-cover rounded-lg shadow-xl"
+                @error="handleImageError"
               />
-              <div 
-                v-else
-                class="w-full h-[400px] bg-gray-100 rounded-lg shadow-xl flex items-center justify-center"
-              >
-                <span class="text-gray-400">Image Coming Soon</span>
-              </div>
             </div>
             <div class="w-full md:w-1/2 flex flex-col justify-center">
               <div class="mb-6">
@@ -69,11 +63,16 @@ import acceptance from '../assets/images/2-acceptance.jpeg'
 import cross from '../assets/images/3-cross.jpeg'
 import bible from '../assets/images/4-Bible.jpeg'
 import prayer from '../assets/images/5-prayer.jpeg'
+import obedience from '../assets/images/6-obedience.jpeg'
+import fellowship from '../assets/images/7-fellowship.jpeg'
+import guidance from '../assets/images/8-guidance.jpeg'
+import defaultImage from '../assets/images/blank.png'
 
 export default {
   name: 'KnowPage',
   data() {
     return {
+      defaultImage,
       steps: [
         {
           title: "Acknowledge God's Personhood",
@@ -102,17 +101,25 @@ export default {
         },
         {
           title: "Obey God's Commands",
-          description: "Apply the teachings of the Bible in your daily life. Obedience to God's Word deepens your relationship with Him and reflects your commitment."
+          description: "Apply the teachings of the Bible in your daily life. Obedience to God's Word deepens your relationship with Him and reflects your commitment.",
+          image: obedience
         },
         {
           title: "Fellowship with Other Believers",
-          description: "Engage in a community of faith where you can grow, receive support, and serve others. Fellowship provides encouragement and accountability on your spiritual journey."
+          description: "Engage in a community of faith where you can grow, receive support, and serve others. Fellowship provides encouragement and accountability on your spiritual journey.",
+          image: fellowship
         },
         {
           title: "Seek the Guidance of the Holy Spirit",
-          description: "Be attentive to the Holy Spirit's leading in your life, allowing Him to transform you and reveal God's will. Walking in the Spirit empowers you to live according to God's purposes."
+          description: "Be attentive to the Holy Spirit's leading in your life, allowing Him to transform you and reveal God's will. Walking in the Spirit empowers you to live according to God's purposes.",
+          image: guidance
         }
       ]
+    }
+  },
+  methods: {
+    handleImageError(e) {
+      e.target.src = this.defaultImage
     }
   }
 }
