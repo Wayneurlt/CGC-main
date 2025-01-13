@@ -27,18 +27,27 @@
             ]"
           >
             <div class="w-full md:w-1/2">
+<<<<<<< HEAD
               <img
                 v-if="step.image"
                 :src="step.image"
+=======
+              <img 
+                :src="step.image || defaultImage"
+>>>>>>> 680737749ee691a9260db14677df8a66e1c700a4
                 :alt="step.title"
                 class="w-full h-[400px] object-cover rounded-lg shadow-xl"
+                @error="handleImageError"
               />
+<<<<<<< HEAD
               <div
                 v-else
                 class="w-full h-[400px] bg-gray-100 rounded-lg shadow-xl flex items-center justify-center"
               >
                 <span class="text-gray-400">Image Coming Soon</span>
               </div>
+=======
+>>>>>>> 680737749ee691a9260db14677df8a66e1c700a4
             </div>
             <div class="w-full md:w-1/2 flex flex-col justify-center">
               <div class="mb-6">
@@ -118,16 +127,29 @@
 
 <script>
 // Import images
+<<<<<<< HEAD
 import majesticMountain from "../assets/images/1-Majestic mountain.jpeg";
 import acceptance from "../assets/images/2-acceptance.jpeg";
 import cross from "../assets/images/3-cross.jpeg";
 import bible from "../assets/images/4-Bible.jpeg";
 import prayer from "../assets/images/5-prayer.jpeg";
+=======
+import majesticMountain from '../assets/images/1-Majestic mountain.jpeg'
+import acceptance from '../assets/images/2-acceptance.jpeg'
+import cross from '../assets/images/3-cross.jpeg'
+import bible from '../assets/images/4-Bible.jpeg'
+import prayer from '../assets/images/5-prayer.jpeg'
+import obedience from '../assets/images/6-obedience.jpeg'
+import fellowship from '../assets/images/7-fellowship.jpeg'
+import guidance from '../assets/images/8-guidance.jpeg'
+import defaultImage from '../assets/images/blank.png'
+>>>>>>> 680737749ee691a9260db14677df8a66e1c700a4
 
 export default {
   name: "KnowPage",
   data() {
     return {
+      defaultImage,
       steps: [
         {
           title: "Acknowledge God's Personhood",
@@ -161,6 +183,7 @@ export default {
         },
         {
           title: "Obey God's Commands",
+<<<<<<< HEAD
           description:
             "Apply the teachings of the Bible in your daily life. Obedience to God's Word deepens your relationship with Him and reflects your commitment.",
         },
@@ -179,3 +202,28 @@ export default {
   },
 };
 </script>
+=======
+          description: "Apply the teachings of the Bible in your daily life. Obedience to God's Word deepens your relationship with Him and reflects your commitment.",
+          image: obedience
+        },
+        {
+          title: "Fellowship with Other Believers",
+          description: "Engage in a community of faith where you can grow, receive support, and serve others. Fellowship provides encouragement and accountability on your spiritual journey.",
+          image: fellowship
+        },
+        {
+          title: "Seek the Guidance of the Holy Spirit",
+          description: "Be attentive to the Holy Spirit's leading in your life, allowing Him to transform you and reveal God's will. Walking in the Spirit empowers you to live according to God's purposes.",
+          image: guidance
+        }
+      ]
+    }
+  },
+  methods: {
+    handleImageError(e) {
+      e.target.src = this.defaultImage
+    }
+  }
+}
+</script>
+>>>>>>> 680737749ee691a9260db14677df8a66e1c700a4
