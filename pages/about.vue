@@ -16,7 +16,7 @@ const leaders = ref([
   },
   {
     id: 3,
-    name: "Michael Brown",
+    name: "Mildred Ludenyi",
     role: "Worship Leader",
     photo: "/api/placeholder/200/200"
   }
@@ -106,7 +106,7 @@ const churchInfo = {
             >
               <img
                 class="w-full"
-                src="/assets/images/blank.png"
+                src="/assets/images/man.jpg"
                 alt="Team Member 1"
               />
               <div class="p-4 bg-white text-center">
@@ -121,7 +121,7 @@ const churchInfo = {
             >
               <img
                 class="w-full"
-                src="/assets/images/blank.png"
+                src="/assets/images/youth.jpg"
                 alt="Team Member 2"
               />
               <div class="p-4 bg-white text-center">
@@ -136,7 +136,7 @@ const churchInfo = {
             >
               <img
                 class="w-full"
-                src="/assets/images/blank.png"
+                src="/assets/images/women.jpg"
                 alt="Team Member 3"
               />
               <div class="p-4 bg-white text-center">
