@@ -21,7 +21,7 @@
             class="w-full max-w-xl xl:w-full xl:mx-auto xl:pr-24 xl:max-w-xl"
           >
             <h3 class="text-4xl font-bold text-white">
-              Welcome to Our Church Community!
+              Welcome to Our Church Community
             </h3>
             <p class="mt-4 text-lg text-gray-200">
               Join a community that nurtures your faith, fosters spiritual growth, and provides a space to connect and serve.
