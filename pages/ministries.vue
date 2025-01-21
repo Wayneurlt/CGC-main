@@ -77,7 +77,7 @@ const activeTab = ref(0);
 const ministries = [
   {
     title: "Sunday School",
-    shortTitle: "Sunday",
+    shortTitle: "Kids",
     description: "Sunday School provides a nurturing environment for children to learn about God's word through engaging lessons and activities.",
     image: sunday
   },
