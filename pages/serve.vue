@@ -94,7 +94,7 @@ const ministryAreas = [
 
 const testimonials = [
   {
-    quote: "Serving in the children's ministry has been such a blessing. Watching the little ones grow in their faith is incredible.",
+    quote: "Serving in the children's ministry has been such a blessing. Watching the little ones as well as the teens grow in their faith is incredible.",
     author: "Sarah M.",
     ministry: "Children's Ministry"
   },
