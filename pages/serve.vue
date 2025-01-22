@@ -40,7 +40,7 @@ const GOOGLE_FORM_FIELDS = {
   email: 'entry.111111111',
   phone: 'entry.222222222',
   membershipStatus: 'entry.333333333',
-  attendanceDuration: 'entry.444444444',
+  
   ministryPreference: 'entry.555555555',
   availableDays: 'entry.666666666',
   relevantSkills: 'entry.777777777',
@@ -145,7 +145,7 @@ const submitToGoogleForm = async () => {
     googleFormData.append(GOOGLE_FORM_FIELDS.email, formData.value.personalInfo.email);
     googleFormData.append(GOOGLE_FORM_FIELDS.phone, formData.value.personalInfo.phone);
     googleFormData.append(GOOGLE_FORM_FIELDS.membershipStatus, formData.value.churchInfo.membershipStatus);
-    googleFormData.append(GOOGLE_FORM_FIELDS.attendanceDuration, formData.value.churchInfo.attendanceDuration);
+    
     googleFormData.append(GOOGLE_FORM_FIELDS.ministryPreference, formData.value.interests.ministryPreference.join(', '));
     googleFormData.append(GOOGLE_FORM_FIELDS.availableDays, formData.value.interests.availableDays.join(', '));
     googleFormData.append(GOOGLE_FORM_FIELDS.relevantSkills, formData.value.experience.relevantSkills);
