@@ -89,7 +89,7 @@ const churchInfo = {
         <div class="mb-8">
           <h2 class="text-3xl font-bold text-black text-center">
             
-            <span class="text-red-700">Meet Our Leadership</span>
+            <span class="text-red-700">Meet Our Leaders</span>
           </h2>
           <p class="mt-2 text-gray-600 text-center">
            
@@ -110,7 +110,7 @@ const churchInfo = {
                 alt="Team Member 1"
               />
               <div class="p-4 bg-white text-center">
-                <h3 class="text-lg font-semibold text-gray-900">Pastor John Smith</h3>
+                <h3 class="text-lg font-semibold text-gray-900">Bishop Evans Mulunji</h3>
                 <p class="text-gray-600">Senior Pastor</p>
               </div>
             </div>
@@ -141,7 +141,7 @@ const churchInfo = {
               />
               <div class="p-4 bg-white text-center">
                 <h3 class="text-lg font-semibold text-gray-900">
-                  Michael Brown
+                  Mildred Ludenyi
                 </h3>
                 <p class="text-gray-600">Worship Leader</p>
               </div>
