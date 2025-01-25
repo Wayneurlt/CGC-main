@@ -143,7 +143,7 @@ const churchInfo = {
                 <h3 class="text-lg font-semibold text-gray-900">
                   Mildred Ludenyi
                 </h3>
-                <p class="text-gray-600">Worship Leader</p>
+                <p class="text-gray-600">Prayer Leader</p>
               </div>
             </div>
           </div>
