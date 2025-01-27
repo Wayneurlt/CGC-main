@@ -33,9 +33,10 @@ const branches = [
 const churchInfo = {
   title: 'Growth Centre Church',
   established: '2000',
-  mission: 'Our mission is to glorify God by leading people into a growing relationship with Jesus Christ, equipping them to serve and share His love with the world.'
+  mission: 'Our mission is to glorify God by leading people into a growing relationship with Jesus Christ, equipping them to serve and share His love with the world.',
   vision: 'Our vision is to be a vibrant, Christ-centered community that transforms lives and impacts the world for the glory of God.'
 };
+
 </script>
 
 <template>
