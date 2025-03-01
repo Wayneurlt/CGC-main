@@ -48,6 +48,17 @@
           <p class="text-slate-700">{{ ministries[activeTab].description }}</p>
         </div>
 
+        <!-- Ministry Departments Section -->
+        <div class="mt-8 bg-slate-50 p-6 rounded-lg">
+          <h4 class="text-lg font-semibold mb-4">Departments</h4>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <li v-for="(department, idx) in ministries[activeTab].departments" :key="idx" class="flex items-start">
+              <span class="text-[#b70213] mr-2">•</span>
+              <span>{{ department }}</span>
+            </li>
+          </ul>
+        </div>
+
         <!-- Image Section -->
         <div class="mt-8 overflow-hidden rounded-2xl">
           <img
@@ -66,44 +77,75 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import sunday from "../assets/images/sunday.jpg";
-import teen from "../assets/images/teen.jpg";
-import youth from "../assets/images/youth.jpg";
-import women from "../assets/images/women.jpg";
-import man from "../assets/images/man.jpg";
+import altarMinistry from "../assets/images/altar.jpg";
+import prayerMinistry from "../assets/images/prayer.jpg";
+import fellowshipMinistry from "../assets/images/fellowship.jpg";
+import missionsMinistry from "../assets/images/missions.jpg";
+import financeMinistry from "../assets/images/finance.jpg";
 
 const activeTab = ref(0);
 
 const ministries = [
   {
-    title: "Sunday School",
-    shortTitle: "Kids",
-    description: "Sunday School provides a nurturing environment for children to learn about God's word through engaging lessons and activities.",
-    image: sunday
+    title: "Altar Ministry",
+    shortTitle: "Altar",
+    description: "The Altar Ministry focuses on enhancing the worship experience and ensuring that church services run smoothly and effectively.",
+    departments: [
+      "Ushering",
+      "Protocol and Hospitality",
+      "Praise and Worship",
+      "Interpretation"
+    ],
+    image: altarMinistry
   },
   {
-    title: "Teens Ministry",
-    shortTitle: "Teens",
-    description: "Our Teens Ministry supports adolescents in their faith journey, addressing their unique challenges and spiritual growth.",
-    image: teen
+    title: "Prayer Ministry",
+    shortTitle: "Prayer",
+    description: "Our Prayer Ministry is dedicated to intercession and spiritual warfare, creating a foundation of prayer for all church activities.",
+    departments: [
+      "Prayer department"
+    ],
+    image: prayerMinistry
   },
   {
-    title: "Youth Ministry",
-    shortTitle: "Youth",
-    description: "The Youth Ministry empowers young adults to grow in their faith and connect through fellowship, service, and worship.",
-    image: youth
+    title: "Fellowship Development and Care Ministry",
+    shortTitle: "Fellowship",
+    description: "This ministry focuses on building community through various fellowship groups and providing care to meet the needs of our congregation.",
+    departments: [
+      "Men's fellowship",
+      "Youth with praise",
+      "The women fellowship",
+      "Children's ministry",
+      "Teenagers ministry",
+      "Home churches",
+      "Compassion services",
+      "Cradle ministry"
+    ],
+    image: fellowshipMinistry
   },
   {
-    title: "Women Ministries",
-    shortTitle: "Women",
-    description: "Women Ministries provides a supportive community for women to grow spiritually, share experiences, and serve others.",
-    image: women
+    title: "Missions Ministry",
+    shortTitle: "Missions",
+    description: "The Missions Ministry extends our church's influence beyond our walls through evangelism, church planting, and discipleship efforts.",
+    departments: [
+      "Missions to Institutions and Church Planting",
+      "Outreach missions",
+      "Discipleship and Internal missions"
+    ],
+    image: missionsMinistry
   },
   {
-    title: "Men Ministries",
-    shortTitle: "Men",
-    description: "Men Ministries fosters spiritual growth and brotherhood among men, encouraging them to lead Christ-centered lives.",
-    image: man
+    title: "Finance, Planning and Information Technology Ministry",
+    shortTitle: "Admin",
+    description: "This ministry handles the administrative, financial, and technological aspects of our church to ensure effective operation and growth.",
+    departments: [
+      "Finance and Administration",
+      "Maintenance and Repair of Equipment and Facilities",
+      "Programme Coordination",
+      "Information and Communication Technology (ICT)",
+      "Training and Christian Development"
+    ],
+    image: financeMinistry
   }
 ];
 </script>
