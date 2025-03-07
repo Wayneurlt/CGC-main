@@ -15,7 +15,7 @@
         <div class="overflow-hidden bg-white shadow-md transform transition-transform duration-300 hover:scale-105">
           <img
             class="object-cover w-full h-56"
-            src="/assets/images/jesus.jpg"
+            src="/assets/images/bishop.jpg"
             alt="Church Event 1"
           />
           <div class="p-6">
@@ -89,7 +89,7 @@
         <div class="overflow-hidden bg-white shadow-md transform transition-transform duration-300 hover:scale-105">
           <img
             class="object-cover w-full h-56"
-            src="/assets/images/leaders.webp"
+            src="/assets/images/Council.jpg"
             alt="Church Announcement"
           />
           <div class="p-6">

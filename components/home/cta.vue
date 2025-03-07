@@ -2,7 +2,7 @@
   <section class="relative overflow-hidden bg-black/50">
     <!-- Background Image -->
     <img
-      src="/assets/images/biblebg.jpeg"
+      src="/assets/images/4-Bible.jpeg"
       alt="Christian Growth Center Church"
       class="absolute inset-0 object-cover w-full h-full"
     />

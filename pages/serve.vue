@@ -1,3 +1,194 @@
+<template>
+  <HomeNavbar class="bg-white"/>
+  <div class="w-full mt-24 bg-white">
+    <!-- Ministry Areas Section -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-7xl">
+        <h2 class="text-3xl font-bold text-[#b70213] text-center mb-12">Ministry Areas</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div v-for="ministry in ministryAreas" 
+               :key="ministry.id" 
+               class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300">
+            <h3 class="text-xl font-semibold text-[#b70213] mb-3">{{ ministry.title }}</h3>
+            <p class="text-gray-600 mb-4">{{ ministry.description }}</p>
+            <div class="space-y-2">
+              <p class="font-medium">Available Roles:</p>
+              <ul class="list-disc list-inside text-gray-600 mb-4">
+                <li v-for="role in ministry.roles" 
+                    :key="role" 
+                    class="ml-2">{{ role }}</li>
+              </ul>
+              <p class="text-sm text-gray-500 italic">
+                <strong>Requirements:</strong> {{ ministry.requirements }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-white">
+      <div class="container mx-auto px-4 max-w-7xl">
+        <h2 class="text-3xl font-bold text-[#b70213] text-center mb-12">Volunteer Testimonials</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div v-for="testimonial in testimonials" 
+               :key="testimonial.author"
+               class="bg-gray-50 p-6 rounded-lg">
+            <p class="text-gray-600 italic mb-4">"{{ testimonial.quote }}"</p>
+            <p class="font-semibold">{{ testimonial.author }}</p>
+            <p class="text-sm text-[#b70213]">{{ testimonial.ministry }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Volunteer Application Form -->
+    <section class="py-16 bg-gray-50">
+      <div class="container mx-auto px-4 max-w-7xl">
+        <h2 class="text-3xl font-bold text-[#b70213] text-center mb-12">Volunteer Application</h2>
+        <form @submit.prevent="submitToGoogleForm" class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
+          <!-- Personal Information -->
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4">Personal Information</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-gray-700 mb-2">First Name</label>
+                <input v-model="formData.personalInfo.firstName" 
+                       type="text" 
+                       required
+                       class="w-full px-4 py-2 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-2">Last Name</label>
+                <input v-model="formData.personalInfo.lastName" 
+                       type="text" 
+                       required
+                       class="w-full px-4 py-2 border bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-2">Email</label>
+                <input v-model="formData.personalInfo.email" 
+                       type="email" 
+                       required
+                       class="w-full px-4 py-2 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-2">Phone</label>
+                <input v-model="formData.personalInfo.phone" 
+                       type="tel" 
+                       required
+                       class="w-full px-4 py-2 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+              </div>
+            </div>
+          </div>
+
+          <!-- Church Information -->
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4">Church Information</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-gray-700 mb-2">Membership Status</label>
+                <select v-model="formData.churchInfo.membershipStatus" 
+                        required
+                        class="w-full px-4 py-2 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+                  <option value="">Select status</option>
+                  <option value="member">Member</option>
+                  <option value="regular">Regular Attendee</option>
+                  <option value="visitor">Visitor</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-2">How long have you been attending?</label>
+                <input v-model="formData.churchInfo.attendanceDuration" 
+                       type="text"
+                       class="w-full px-4 py-2 border rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent">
+              </div>
+            </div>
+          </div>
+
+          <!-- Ministry Interests -->
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4">Ministry Interests</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-gray-700 mb-2">Which ministries interest you?</label>
+                <div class="space-y-2">
+                  <div v-for="ministry in ministryAreas" 
+                       :key="ministry.id" 
+                       class="flex items-center">
+                    <input type="checkbox" 
+                           :value="ministry.title" 
+                           v-model="formData.interests.ministryPreference"
+                           class="h-4 w-4 text-[#b70213] rounded border-gray-300 focus:ring-[#b70213] mr-2">
+                    <label>{{ ministry.title }}</label>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-2">Availability</label>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  <div v-for="option in availabilityOptions" 
+                       :key="option" 
+                       class="flex items-center">
+                    <input type="checkbox" 
+                           :value="option" 
+                           v-model="formData.interests.availableDays"
+                           class="h-4 w-4 text-[#b70213] rounded border-gray-300 focus:ring-[#b70213] mr-2">
+                    <label class="text-sm">{{ option }}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div class="mb-8">
+            <h3 class="text-xl font-semibold mb-4">Experience & Skills</h3>
+            <div class="space-y-4">
+              <div>
+                <label class="block text-gray-700 mb-2">Relevant Skills & Experience</label>
+                <textarea v-model="formData.experience.relevantSkills"
+                          class="w-full px-4 py-2 border bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent"
+                          rows="4"></textarea>
+              </div>
+              <div>
+                <label class="block text-gray-700 mb-2">Previous Volunteer Experience</label>
+                <textarea v-model="formData.experience.previousVolunteer"
+                          class="w-full px-4 py-2 border bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b70213] focus:border-transparent"
+                          rows="4"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submission Status Messages -->
+          <div v-if="submitStatus.loading" class="text-center mb-4">
+            <p class="text-gray-600">Submitting your application...</p>
+          </div>
+          <div v-if="submitStatus.success" class="text-green-600 text-center mb-4">
+            {{ submitStatus.message }}
+          </div>
+          <div v-if="submitStatus.error" class="text-red-600 text-center mb-4">
+            {{ submitStatus.message }}
+          </div>
+
+          <button type="submit" 
+                  :disabled="submitStatus.loading"
+                  :class="[
+                    'w-full px-6 py-3 rounded-md transition-colors duration-300',
+                    submitStatus.loading 
+                      ? 'bg-gray-400 cursor-not-allowed' 
+                      : 'bg-[#b70213] hover:bg-[#980110] text-white'
+                  ]">
+            {{ submitStatus.loading ? 'Submitting...' : 'Submit Application' }}
+          </button>
+        </form>
+      </div>
+    </section>
+  </div>
+  <HomeFoot/>
+</template>
+
 <script setup lang="ts">
 import { ref } from 'vue';
 import { HomeNavbar, HomeFoot } from '#components';
@@ -40,7 +231,7 @@ const GOOGLE_FORM_FIELDS = {
   email: 'entry.111111111',
   phone: 'entry.222222222',
   membershipStatus: 'entry.333333333',
-  
+  attendanceDuration: 'entry.444444444',
   ministryPreference: 'entry.555555555',
   availableDays: 'entry.666666666',
   relevantSkills: 'entry.777777777',
@@ -94,7 +285,7 @@ const ministryAreas = [
 
 const testimonials = [
   {
-    quote: "Serving in the children's ministry has been such a blessing. Watching the little ones as well as the teens grow in their faith is incredible.",
+    quote: "Serving in the children's ministry has been such a blessing. Watching the little ones grow in their faith is incredible.",
     author: "Sarah M.",
     ministry: "Children's Ministry"
   },
@@ -145,14 +336,14 @@ const submitToGoogleForm = async () => {
     googleFormData.append(GOOGLE_FORM_FIELDS.email, formData.value.personalInfo.email);
     googleFormData.append(GOOGLE_FORM_FIELDS.phone, formData.value.personalInfo.phone);
     googleFormData.append(GOOGLE_FORM_FIELDS.membershipStatus, formData.value.churchInfo.membershipStatus);
-    
+    googleFormData.append(GOOGLE_FORM_FIELDS.attendanceDuration, formData.value.churchInfo.attendanceDuration);
     googleFormData.append(GOOGLE_FORM_FIELDS.ministryPreference, formData.value.interests.ministryPreference.join(', '));
     googleFormData.append(GOOGLE_FORM_FIELDS.availableDays, formData.value.interests.availableDays.join(', '));
     googleFormData.append(GOOGLE_FORM_FIELDS.relevantSkills, formData.value.experience.relevantSkills);
     googleFormData.append(GOOGLE_FORM_FIELDS.previousVolunteer, formData.value.experience.previousVolunteer);
 
-    // Submit the form
-    const response = await fetch(GOOGLE_FORM_URL, {
+    // Submit the form data to Google Forms
+    await fetch(GOOGLE_FORM_URL, {
       method: 'POST',
       body: googleFormData,
       mode: 'no-cors'
@@ -162,17 +353,30 @@ const submitToGoogleForm = async () => {
       loading: false,
       success: true,
       error: false,
-      message: 'Thank you for your application! We will be in touch soon.'
+      message: 'Thank you! Your application has been submitted successfully.'
     };
 
-    // Reset form after successful submission
+    // Reset the form after successful submission
     formData.value = {
-      personalInfo: { firstName: '', lastName: '', email: '', phone: '' },
-      churchInfo: { membershipStatus: '', attendanceDuration: '' },
-      interests: { ministryPreference: [], availableDays: [] },
-      experience: { relevantSkills: '', previousVolunteer: '' }
+      personalInfo: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+      },
+      churchInfo: {
+        membershipStatus: '',
+        attendanceDuration: '',
+      },
+      interests: {
+        ministryPreference: [],
+        availableDays: [],
+      },
+      experience: {
+        relevantSkills: '',
+        previousVolunteer: '',
+      }
     };
-
   } catch (error) {
     submitStatus.value = {
       loading: false,
@@ -180,7 +384,6 @@ const submitToGoogleForm = async () => {
       error: true,
       message: 'An error occurred. Please try again later.'
     };
-    console.error('Form submission error:', error);
   }
 };
 </script>

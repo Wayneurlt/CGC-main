@@ -1,5 +1,5 @@
 <template>
-  <AboutNavbar/>
+  <AboutNavbar />
   <section class="w-full overflow-hidden px-4 py-10 mt-16 lg:mt-24 lg:px-16 2xl:px-48 bg-white">
     <div class="mx-auto max-w-7xl">
       <!-- Header Section -->
@@ -71,81 +71,74 @@
       </div>
     </div>
   </section>
-  <HomeFoot/>
+  <HomeFoot />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import altarMinistry from "../assets/images/altar.jpg";
-import prayerMinistry from "../assets/images/prayer.jpg";
-import fellowshipMinistry from "../assets/images/fellowship.jpg";
-import missionsMinistry from "../assets/images/missions.jpg";
-import financeMinistry from "../assets/images/finance.jpg";
-
 const activeTab = ref(0);
 
 const ministries = [
   {
-    title: "Altar Ministry",
-    shortTitle: "Altar",
-    description: "The Altar Ministry focuses on enhancing the worship experience and ensuring that church services run smoothly and effectively.",
+    title: "Sunday School Ministry",
+    shortTitle: "Sunday School",
+    description: "The Sunday School Ministry focuses on teaching children and young people the foundational truths of the Bible in a fun and engaging way.",
     departments: [
-      "Ushering",
-      "Protocol and Hospitality",
-      "Praise and Worship",
-      "Interpretation"
+      "Children's Classes",
+      "Teen Classes",
+      "Teachers Training",
+      "Curriculum Development"
     ],
-    image: altarMinistry
+    image: "https://placehold.co/1216x640/EEE/31343C?text=Sunday+School" // Placeholder image
   },
   {
-    title: "Prayer Ministry",
-    shortTitle: "Prayer",
-    description: "Our Prayer Ministry is dedicated to intercession and spiritual warfare, creating a foundation of prayer for all church activities.",
+    title: "Teen Ministries",
+    shortTitle: "Teen",
+    description: "Our Teen Ministries provide a safe and supportive environment for teenagers to grow in their faith, build relationships, and serve others.",
     departments: [
-      "Prayer department"
+      "Teen Bible Study",
+      "Youth Events",
+      "Mentorship Programs",
+      "Community Service"
     ],
-    image: prayerMinistry
+    image: "https://placehold.co/1216x640/EEE/31343C?text=Teen+Ministries" // Placeholder image
   },
   {
-    title: "Fellowship Development and Care Ministry",
-    shortTitle: "Fellowship",
-    description: "This ministry focuses on building community through various fellowship groups and providing care to meet the needs of our congregation.",
+    title: "Youth Ministry",
+    shortTitle: "Youth",
+    description: "The Youth Ministry is dedicated to empowering young adults to live out their faith through worship, discipleship, and outreach.",
     departments: [
-      "Men's fellowship",
-      "Youth with praise",
-      "The women fellowship",
-      "Children's ministry",
-      "Teenagers ministry",
-      "Home churches",
-      "Compassion services",
-      "Cradle ministry"
+      "Youth Worship",
+      "Small Groups",
+      "Mission Trips",
+      "Leadership Training"
     ],
-    image: fellowshipMinistry
+    image: "https://placehold.co/1216x640/EEE/31343C?text=Youth+Ministry" // Placeholder image
   },
   {
-    title: "Missions Ministry",
-    shortTitle: "Missions",
-    description: "The Missions Ministry extends our church's influence beyond our walls through evangelism, church planting, and discipleship efforts.",
+    title: "Men's Ministry",
+    shortTitle: "Men",
+    description: "The Men's Ministry focuses on building strong, godly men through fellowship, Bible study, and service opportunities.",
     departments: [
-      "Missions to Institutions and Church Planting",
-      "Outreach missions",
-      "Discipleship and Internal missions"
+      "Men's Bible Study",
+      "Retreats",
+      "Accountability Groups",
+      "Service Projects"
     ],
-    image: missionsMinistry
+    image: "https://placehold.co/1216x640/EEE/31343C?text=Men's+Ministry" // Placeholder image
   },
   {
-    title: "Finance, Planning and Information Technology Ministry",
-    shortTitle: "Admin",
-    description: "This ministry handles the administrative, financial, and technological aspects of our church to ensure effective operation and growth.",
+    title: "Women's Ministry",
+    shortTitle: "Women",
+    description: "The Women's Ministry provides a space for women to connect, grow spiritually, and support one another through life's challenges.",
     departments: [
-      "Finance and Administration",
-      "Maintenance and Repair of Equipment and Facilities",
-      "Programme Coordination",
-      "Information and Communication Technology (ICT)",
-      "Training and Christian Development"
+      "Women's Bible Study",
+      "Retreats",
+      "Mentorship Programs",
+      "Community Outreach"
     ],
-    image: financeMinistry
+    image: "https://placehold.co/1216x640/EEE/31343C?text=Women's+Ministry" // Placeholder image
   }
 ];
 </script>

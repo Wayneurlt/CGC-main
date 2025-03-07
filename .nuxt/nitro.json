@@ -1,27 +1,17 @@
 {
-<<<<<<< HEAD
-  "date": "2025-01-12T14:01:18.766Z",
-=======
-  "date": "2025-01-13T14:16:42.864Z",
->>>>>>> 680737749ee691a9260db14677df8a66e1c700a4
+  "date": "2025-03-07T19:28:39.971Z",
   "preset": "nitro-dev",
   "framework": {
     "name": "nuxt",
-    "version": "3.15.0"
+    "version": "3.15.1"
   },
   "versions": {
     "nitro": "2.10.4"
   },
   "dev": {
-<<<<<<< HEAD
-    "pid": 22212,
+    "pid": 7384,
     "workerAddress": {
-      "socketPath": "\\\\.\\pipe\\nitro\\worker-22212-1.sock"
-=======
-    "pid": 12092,
-    "workerAddress": {
-      "socketPath": "\\\\.\\pipe\\nitro\\worker-12092-1.sock"
->>>>>>> 680737749ee691a9260db14677df8a66e1c700a4
+      "socketPath": "\\\\.\\pipe\\nitro\\worker-7384-1.sock"
     }
   }
 }

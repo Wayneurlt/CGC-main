@@ -12,7 +12,7 @@
           <img
             alt="Church Community"
             class="object-cover object-center h-full w-full"
-            src="/assets/images/cross.jpg"
+            src="/assets/images/1-Majestic mountain.jpeg"
           />
         </div>
         <div

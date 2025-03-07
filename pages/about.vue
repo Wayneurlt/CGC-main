@@ -1,13 +1,13 @@
 <script setup>
-import { vision } from 'googleapis/build/src/apis/vision';
 import { ref } from 'vue';
 
+// Leaders data
 const leaders = ref([
   {
     id: 1,
     name: "Evans Mulunji",
     role: "Bishop",
-    photo: "/api/placeholder/200/200"
+    photo: "/assets/images/bishop.jpg"
   },
   {
     id: 2,
@@ -23,6 +23,7 @@ const leaders = ref([
   }
 ]);
 
+// Branches data
 const branches = [
   'MAILI NNE',
   'HAMTUA',
@@ -30,23 +31,28 @@ const branches = [
   'KITENGELA'
 ];
 
+// Church information
 const churchInfo = {
   title: 'Growth Centre Church',
   established: '2000',
   mission: 'Our mission is to glorify God by leading people into a growing relationship with Jesus Christ, equipping them to serve and share His love with the world.',
   vision: 'Our vision is to be a vibrant, Christ-centered community that transforms lives and impacts the world for the glory of God.'
 };
-
 </script>
 
 <template>
-  <HomeNavbar class="bg-white"/>
+  <HomeNavbar class="bg-white" />
   <div class="min-h-screen mt-24 bg-white">
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-r from-gray-100 to-gray-200 py-16">
-      <div class="container mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4"> About  <span class="text-red-700">{{ churchInfo.title }}</span></h1>
-        <p class="text-lg text-gray-700 mb-6">We are a community of faith, hope, and love, dedicated to serving God and our neighbors.</p>
+    <section class="relative bg-cover bg-center py-32" style="background-image: url('assets/images/4-Bible.jpeg');">
+      <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+      <div class="container mx-auto px-4 text-center relative z-10">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+          About <span class="text-red-700">{{ churchInfo.title }}</span>
+        </h1>
+        <p class="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
+          We are a community of faith, hope, and love, dedicated to serving God and our neighbors.
+        </p>
         <button class="bg-red-700 text-white px-8 py-3 rounded-md hover:bg-red-800 transition-colors">
           Join Us
         </button>
@@ -57,7 +63,9 @@ const churchInfo = {
     <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-red-700 text-center mb-8">Our Mission</h2>
-        <p class="text-lg text-center max-w-3xl mx-auto">{{ churchInfo.mission }}</p>
+        <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto">
+          {{ churchInfo.mission }}
+        </p>
       </div>
     </section>
 
@@ -65,107 +73,48 @@ const churchInfo = {
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-red-700 text-center mb-8">Our History</h2>
-        <p class="text-lg text-center max-w-3xl mx-auto">
-          Established in {{ churchInfo.established }}, our church has been a beacon of hope and faith for generations. 
+        <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto">
+          Established in {{ churchInfo.established }}, our church has been a beacon of hope and faith for generations.
           From humble beginnings, we have grown into a vibrant community dedicated to making a difference.
         </p>
       </div>
     </section>
 
     <!-- Leadership Section -->
-    <!-- <section class="py-16 bg-white">
+    <section class="py-16 bg-white">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-red-700 text-center mb-12">Meet Our Leadership</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div v-for="leader in leaders" :key="leader.id" class="text-center">
-            <img :src="leader.photo" :alt="leader.name" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover" />
-            <h3 class="text-xl font-semibold mb-2">{{ leader.name }}</h3>
-            <p class="text-gray-600">{{ leader.role }}</p>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-
-    <section class="bg-white text-black py-12">
-      <div class="container mx-auto px-6 sm:px-12 lg:px-20">
-        <div class="mb-8">
-          <h2 class="text-3xl font-bold text-black text-center">
-            
-            <span class="text-red-700">Meet Our Leaders</span>
-          </h2>
-          <p class="mt-2 text-gray-600 text-center">
-           
-          </p>
-        </div>
-
-        <div class="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
+        <h2 class="text-3xl font-bold text-red-700 text-center mb-12">Meet Our Leaders</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div
-            class="grid grid-cols-1 gap-6 mt-8 sm:grid-cols-3 md:mt-16 lg:gap-x-12"
+            v-for="leader in leaders"
+            :key="leader.id"
+            class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105"
           >
-            <!-- Card 1 -->
-            <div
-              class="group overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
-            >
-              <img
-                class="w-full"
-                src="/assets/images/man.jpg"
-                alt="Team Member 1"
-              />
-              <div class="p-4 bg-white text-center">
-                <h3 class="text-lg font-semibold text-gray-900">Bishop Evans Mulunji</h3>
-                <p class="text-gray-600">Bishop</p>
-              </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div
-              class="group overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
-            >
-              <img
-                class="w-full"
-                src="/assets/images/youth.jpg"
-                alt="Team Member 2"
-              />
-              <div class="p-4 bg-white text-center">
-                <h3 class="text-lg font-semibold text-gray-900">Jane Smith</h3>
-                <p class="text-gray-600">Youth Ministry Leader</p>
-              </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div
-              class="group overflow-hidden rounded-lg shadow-lg transform transition-all duration-300 hover:scale-105"
-            >
-              <img
-                class="w-full"
-                src="/assets/images/women.jpg"
-                alt="Team Member 3"
-              />
-              <div class="p-4 bg-white text-center">
-                <h3 class="text-lg font-semibold text-gray-900">
-                  Mildred Ludenyi
-                </h3>
-                <p class="text-gray-600">Prayer Leader</p>
-              </div>
+            <img
+              class="w-full h-64 object-cover"
+              :src="leader.photo"
+              :alt="leader.name"
+            />
+            <div class="p-6 text-center">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ leader.name }}</h3>
+              <p class="text-gray-600">{{ leader.role }}</p>
             </div>
           </div>
         </div>
-
-       
       </div>
     </section>
-
-
-
 
     <!-- Branches Section -->
     <section class="py-16 bg-gray-50">
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-red-700 text-center mb-12">Our Branches</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div v-for="branch in branches" :key="branch" class="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-shadow">
-            <h3 class="text-xl font-semibold text-black mb-3">{{ branch }}</h3>
+          <div
+            v-for="branch in branches"
+            :key="branch"
+            class="bg-white rounded-lg p-6 text-center shadow-md hover:shadow-lg transition-shadow"
+          >
+            <h3 class="text-xl font-semibold text-black mb-4">{{ branch }}</h3>
             <button class="text-black border border-red-700 px-4 py-2 rounded-md hover:bg-red-700 hover:text-white transition-colors">
               Visit Branch
             </button>
@@ -202,10 +151,10 @@ const churchInfo = {
       <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-red-700 text-center mb-8">Contact Us</h2>
         <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
-          <p class="space-y-4">
+          <div class="space-y-4">
             <div class="flex items-center">
               <span class="font-semibold w-24">Address:</span>
-              <span>Uganda road, Eldoret City</span>
+              <span>Uganda Road, Eldoret City</span>
             </div>
             <div class="flex items-center">
               <span class="font-semibold w-24">Phone:</span>
@@ -215,12 +164,12 @@ const churchInfo = {
               <span class="font-semibold w-24">Email:</span>
               <span>growthcentrechurch@gmail.com</span>
             </div>
-          </p>
+          </div>
         </div>
       </div>
     </section>
   </div>
-  <HomeFoot/>
+  <HomeFoot />
 </template>
 
 <style scoped>
