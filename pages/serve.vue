@@ -127,7 +127,7 @@
               </div>
               <div>
                 <label class="block text-gray-700 mb-2">Availability</label>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+                <div class="grid grid-cols-2 md:grid-cols-2 gap-2">
                   <div v-for="option in availabilityOptions" 
                        :key="option" 
                        class="flex items-center">
