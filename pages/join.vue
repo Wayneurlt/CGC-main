@@ -1,273 +1,200 @@
-<template>
-  <section class="w-full h-screen bg-white">
-    <div class="h-full w-full grid grid-cols-1 lg:grid-cols-2">
-      <!-- Left Section -->
-      <div
-        class="relative flex items-end px-4 pb-10 pt-60 sm:pb-16 md:justify-center lg:pb-24 bg-gray-50 sm:px-6 lg:px-8"
-      >
-        <div class="absolute inset-0">
-          <img
-            class="object-cover object-top w-full h-full"
-            src="/assets/images/cross.jpg"
-            alt="Church Community"
-          />
-        </div>
-        <div
-          class="absolute inset-0 bg-gradient-to-t from-black to-transparent"
-        ></div>
+﻿<script setup lang="ts">
+import { push } from 'notivue';
 
-        <div class="relative">
-          <div
-            class="w-full max-w-xl xl:w-full xl:mx-auto xl:pr-24 xl:max-w-xl"
-          >
-            <h3 class="text-4xl font-bold text-white">
-              Welcome to Our Church Community
-            </h3>
-            <p class="mt-4 text-lg text-gray-200">
-              Join a community that nurtures your faith, fosters spiritual growth, and provides a space to connect and serve.
-            </p>
-            <ul class="grid grid-cols-1 mt-10 sm:grid-cols-2 gap-x-8 gap-y-4">
-              <li class="flex items-center space-x-3">
-                <div
-                  class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-[#b70213] rounded-full"
-                >
-                  <svg
-                    class="w-3.5 h-3.5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="text-lg font-medium text-white">
-                  Inspiring Sermons
-                </span>
-              </li>
-              <li class="flex items-center space-x-3">
-                <div
-                  class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-[#b70213] rounded-full"
-                >
-                  <svg
-                    class="w-3.5 h-3.5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="text-lg font-medium text-white">
-                  Fellowship Groups
-                </span>
-              </li>
-              <li class="flex items-center space-x-3">
-                <div
-                  class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-[#b70213] rounded-full"
-                >
-                  <svg
-                    class="w-3.5 h-3.5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="text-lg font-medium text-white">
-                  Community Outreach
-                </span>
-              </li>
-              <li class="flex items-center space-x-3">
-                <div
-                  class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 bg-[#b70213] rounded-full"
-                >
-                  <svg
-                    class="w-3.5 h-3.5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
-                    ></path>
-                  </svg>
-                </div>
-                <span class="text-lg font-medium text-white">
-                  Bible Studies
-                </span>
-              </li>
-            </ul>
-          </div>
+useHead({
+  title: 'Join Us — Growth Centre Church',
+  meta: [
+    { name: 'description', content: 'Become a member of Growth Centre Church, Eldoret. Fill in your details to connect with us.' },
+  ],
+});
+
+const form = reactive({
+  name: '',
+  email: '',
+  phone: '',
+});
+
+const loading = ref(false);
+
+const benefits = [
+  'Inspiring Sermons',
+  'Fellowship Groups',
+  'Community Outreach',
+  'Bible Studies',
+  'Youth Programs',
+  'Prayer Support',
+];
+
+const onImgError = (e: Event) => {
+  const img = e.target as HTMLImageElement;
+  img.src = 'https://images.unsplash.com/photo-1609899258043-ba86e1b04da3?w=1200&auto=format&fit=crop&q=80';
+};
+
+const handleSubmit = async () => {
+  loading.value = true;
+  try {
+    const response = await fetch('https://byzara.life/api/ebonyi/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: form.name, email: form.email, phone: form.phone }),
+    });
+
+    if (response.status === 200 || response.ok) {
+      push.success("Welcome! Your information has been submitted. We'll be in touch soon.");
+      form.name = '';
+      form.email = '';
+      form.phone = '';
+    } else {
+      push.error('Submission failed. Please try again.');
+    }
+  } catch (error: any) {
+    push.error('An error occurred. Please try again later.');
+    console.error('Submission error:', error);
+  } finally {
+    loading.value = false;
+  }
+};
+</script>
+
+<template>
+  <HomeNavbar />
+  <main class="flex-1 bg-white pt-16">
+    <div class="grid grid-cols-1 lg:grid-cols-2 min-h-[calc(100vh-64px)]">
+      <!-- Left Panel – Image + Info -->
+      <div class="relative hidden lg:flex flex-col justify-end overflow-hidden">
+        <img
+          class="absolute inset-0 w-full h-full object-cover object-center"
+          src="/assets/images/cross.jpg"
+          alt="Church Community"
+          @error="onImgError"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+        <div class="relative p-10 pb-12">
+          <h2 class="text-4xl font-bold text-white mb-4 leading-tight">
+            Welcome to<br />Our Church Family
+          </h2>
+          <p class="text-lg text-gray-200 mb-8 max-w-md">
+            Join a community that nurtures your faith, fosters spiritual growth, and provides a space to connect and serve.
+          </p>
+          <ul class="grid grid-cols-2 gap-3">
+            <li v-for="benefit in benefits" :key="benefit" class="flex items-center gap-2">
+              <div class="w-5 h-5 bg-[#1b3764] rounded-full flex items-center justify-center flex-shrink-0">
+                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <span class="text-white font-medium text-sm">{{ benefit }}</span>
+            </li>
+          </ul>
         </div>
       </div>
 
-      <!-- Right Section -->
-      <div
-        class="flex items-center justify-center px-4 py-10 bg-white sm:px-6 lg:px-8 sm:py-16 lg:py-24"
-      >
-        <div class="xl:w-full xl:max-w-sm 2xl:max-w-md xl:mx-auto">
-          <h2 class="text-3xl font-bold leading-tight text-black sm:text-4xl">
-            Join Our Church Family
-          </h2>
-          <p class="mt-2 text-base text-gray-600">
-            Fill in your details to connect with us and be part of our mission.
-          </p>
+      <!-- Right Panel – Form -->
+      <div class="flex items-center justify-center px-4 py-12 sm:px-8 bg-white">
+        <div class="w-full max-w-md">
+          <!-- Mobile hero text -->
+          <div class="lg:hidden mb-8 text-center">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Join Our Church</h1>
+            <p class="text-gray-600">Become part of our growing family in Christ.</p>
+          </div>
 
-          <form @submit.prevent="handleSubmit">
-            <div class="space-y-5">
-              <div>
-                <label for="name" class="text-base font-medium text-gray-900">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  v-model="form.name"
-                  required
-                  placeholder="Enter your full name"
-                  class="block w-full mt-2.5 py-4 px-4 text-black placeholder-gray-500 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-green-600 focus:bg-white caret-green-600"
-                />
-              </div>
+          <!-- Desktop header -->
+          <div class="hidden lg:block mb-8">
+            <h2 class="text-3xl font-bold text-gray-900">Join Our Church Family</h2>
+            <p class="mt-2 text-base text-gray-600">
+              Fill in your details to connect with us and be part of our mission.
+            </p>
+          </div>
 
-              <div>
-                <label for="email" class="text-base font-medium text-gray-900">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  v-model="form.email"
-                  required
-                  placeholder="Enter your email"
-                  class="block w-full mt-2.5 py-4 px-4 text-black placeholder-gray-500 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-green-600 focus:bg-white caret-green-600"
-                />
-              </div>
+          <form @submit.prevent="handleSubmit" class="space-y-5" novalidate>
+            <div>
+              <label for="name" class="block text-sm font-semibold text-gray-900 mb-1.5">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="name"
+                type="text"
+                v-model="form.name"
+                required
+                placeholder="Enter your full name"
+                class="block w-full py-3.5 px-4 text-gray-900 placeholder-gray-400 border border-gray-200 rounded-xl bg-gray-50 focus:outline-none focus:border-[#1b3764] focus:ring-2 focus:ring-[#1b3764]/20 focus:bg-white transition-all duration-200"
+              />
+            </div>
 
-              <div>
-                <label for="phone" class="text-base font-medium text-gray-900">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  v-model="form.phone"
-                  required
-                  placeholder="Enter your phone number (e.g., +123456789)"
-                  class="block w-full mt-2.5 py-4 px-4 text-black placeholder-gray-500 border border-gray-200 rounded-md bg-gray-50 focus:outline-none focus:border-green-600 focus:bg-white caret-green-600"
-                />
-              </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold text-gray-900 mb-1.5">
+                Email Address <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="email"
+                type="email"
+                v-model="form.email"
+                required
+                placeholder="Enter your email address"
+                class="block w-full py-3.5 px-4 text-gray-900 placeholder-gray-400 border border-gray-200 rounded-xl bg-gray-50 focus:outline-none focus:border-[#1b3764] focus:ring-2 focus:ring-[#1b3764]/20 focus:bg-white transition-all duration-200"
+              />
+            </div>
 
-              <div>
-                <button
-                  type="submit"
-                  :disabled="loading"
-                  class="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold bg-white text-[#b70213] rounded-lg shadow border-2 border-[#b70213] hover:bg-[#b70213] hover:text-white transition-all duration-300"
-                >
-                  <span v-if="loading">Submitting...</span>
-                  <span v-else>Join Us</span>
-                </button>
-              </div>
-              <div class="mt-4 flex space-x-2">
-                <a
-                  href="https://wa.me/your-church-link"
-                  target="_blank"
-                  class="flex-1 inline-flex items-center justify-center px-2 py-3 text-sm font-semibold text-white bg-green-500 rounded-md hover:bg-green-600 transition duration-200"
-                >
-                  <svg
-                    class="w-4 h-4 mr-1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M12 0C5.372 0 0 5.373 0 12c0 2.118.55 4.108 1.514 5.844L0 24l6.272-1.594C8.096 23.461 10.016 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm7.306 16.69l-1.924 1.917c-.438.436-1.002.671-1.59.666-1.523-.01-4.06-1.373-6.19-3.502-2.13-2.128-3.491-4.665-3.502-6.19-.005-.587.23-1.15.666-1.588l1.923-1.926c.43-.431 1.125-.431 1.556 0l1.396 1.396c.43.43.43 1.124 0 1.554L8.98 9.696c-.014.014-.019.034-.033.048.003.014.018.025.033.038 1.18 1.366 2.562 2.748 3.929 3.931.014.014.034.03.048.033.014-.014.034-.018.048-.033l1.491-1.488c.43-.43 1.124-.43 1.554 0l1.396 1.396c.432.431.432 1.124 0 1.556z"
-                    />
-                  </svg>
-                  WhatsApp
-                </a>
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-gray-900 mb-1.5">
+                Phone Number <span class="text-red-500">*</span>
+              </label>
+              <input
+                id="phone"
+                type="tel"
+                v-model="form.phone"
+                required
+                placeholder="+254 700 000 000"
+                class="block w-full py-3.5 px-4 text-gray-900 placeholder-gray-400 border border-gray-200 rounded-xl bg-gray-50 focus:outline-none focus:border-[#1b3764] focus:ring-2 focus:ring-[#1b3764]/20 focus:bg-white transition-all duration-200"
+              />
+            </div>
 
-                <a
-                  href="https://facebook.com/your-church-link"
-                  target="_blank"
-                  class="flex-1 inline-flex items-center justify-center px-2 py-3 text-sm font-semibold text-white bg-blue-600 rounded-md hover:bg-blue-700 transition duration-200"
-                >
-                  <svg
-                    class="w-4 h-4 mr-1"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M22.676 0H1.326C.594 0 0 .593 0 1.326v21.348C0 23.406.593 24 1.326 24h11.497v-9.294H9.847v-3.622h2.976v-2.687c0-2.938 1.797-4.548 4.42-4.548 1.256 0 2.339.093 2.654.135v3.074h-1.821c-1.43 0-1.706.678-1.706 1.673v2.354h3.413l-.445 3.622h-2.968V24h5.811c.733 0 1.326-.593 1.326-1.326V1.326C24 .594 23.407 0 22.676 0z"
-                    />
-                  </svg>
-                  Facebook
-                </a>
+            <button
+              type="submit"
+              :disabled="loading || !form.name || !form.email || !form.phone"
+              class="w-full flex items-center justify-center gap-2 py-4 text-base font-semibold text-white bg-[#1b3764] rounded-xl hover:bg-[#0f2347] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 hover:shadow-lg mt-2"
+            >
+              <span v-if="loading" class="loader"></span>
+              <span>{{ loading ? 'Submitting...' : 'Join Our Church' }}</span>
+            </button>
+
+            <div class="relative my-2">
+              <div class="absolute inset-0 flex items-center">
+                <div class="w-full border-t border-gray-200"></div>
               </div>
+              <div class="relative flex justify-center text-sm">
+                <span class="bg-white px-3 text-gray-500">Or connect with us on</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <a
+                href="https://web.facebook.com/mediagcc/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold text-white bg-blue-600 rounded-xl hover:bg-blue-700 transition-all duration-200"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M22.676 0H1.326C.594 0 0 .593 0 1.326v21.348C0 23.406.593 24 1.326 24h11.497v-9.294H9.847v-3.622h2.976v-2.687c0-2.938 1.797-4.548 4.42-4.548 1.256 0 2.339.093 2.654.135v3.074h-1.821c-1.43 0-1.706.678-1.706 1.673v2.354h3.413l-.445 3.622h-2.968V24h5.811c.733 0 1.326-.593 1.326-1.326V1.326C24 .594 23.407 0 22.676 0z"/>
+                </svg>
+                Facebook
+              </a>
+              <a
+                href="https://www.youtube.com/@ChristianGrowthcenterchurch"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center justify-center gap-2 py-3 px-4 text-sm font-semibold text-white bg-red-600 rounded-xl hover:bg-red-700 transition-all duration-200"
+              >
+                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 576 512">
+                  <path d="M549.655 124.083c-6.281-23.65-24.761-42.126-48.419-48.419C457.16 64 288 64 288 64s-169.16 0-213.236 11.664c-23.659 6.293-42.138 24.769-48.419 48.419C16 168.163 16 256.019 16 256.019s0 87.837 10.345 131.936c6.281 23.65 24.761 42.126 48.419 48.419C118.84 448 288 448 288 448s169.16 0 213.236-11.626c23.659-6.293 42.138-24.769 48.419-48.419C560 343.856 560 256 560 256s0-87.837-10.345-131.917zM232 336V176l142.857 80L232 336z"/>
+                </svg>
+                YouTube
+              </a>
             </div>
           </form>
         </div>
       </div>
     </div>
-  </section>
+  </main>
+  <HomeFoot />
 </template>
-
-
-<script>
-
-export default {
-  data() {
-    return {
-      form: {
-        name: "",
-        email: "",
-        phone: "",
-      },
-      loading: false,
-    };
-  },
-  methods: {
-    async handleSubmit() {
-      this.loading = true;
-      try {
-        const response = await fetch(
-          "https://byzara.life/api/ebonyi/add",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              name: this.form.name,
-              email: this.form.email,
-              phone: this.form.phone,
-            }),
-          }
-        );
-
-        if(response.status == 200){
-          push.success("Information Submitted")
-        }
-      } catch (error) {
-        console.error("Error:", error);
-        push.error("Error: " + error.message);
-      } finally {
-        this.loading = false;
-      }
-    },
-  },
-};
-</script>

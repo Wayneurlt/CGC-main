@@ -1,143 +1,63 @@
 <template>
-  <section class="text-gray-600 body-font bg-white">
-    <div class="container px-5 py-24 mx-auto flex flex-col">
-      <div class="mb-12 text-center">
-        <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">Our Church Mission</h2>
-        <p class="text-lg text-gray-600 mt-4">
-          Transforming lives through the power of God and building a community grounded in faith, love, and service.
+  <section class="py-12 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <span class="inline-block text-[#c4932a] font-semibold text-xs uppercase tracking-widest mb-2">Our Mission</span>
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">Transforming Lives Through Faith</h2>
+        <p class="mt-2 text-base text-gray-500 max-w-xl mx-auto">
+          Building a community grounded in faith, love, and service to God and each other.
         </p>
       </div>
-      <div class="flex flex-wrap">
-        <div class="lg:w-1/2 w-full mb-10 lg:mb-0 rounded-lg overflow-hidden">
+
+      <div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <!-- Image -->
+        <div class="relative rounded-2xl overflow-hidden shadow-xl">
           <img
-            alt="Church Community"
-            class="object-cover object-center h-full w-full"
+            alt="Church Community in Worship"
+            class="object-cover w-full h-full min-h-[320px]"
             src="/assets/images/1-Majestic mountain.jpeg"
+            loading="lazy"
+            @error="onImgError"
           />
+          <div class="absolute bottom-4 left-4 bg-white rounded-xl px-4 py-3 shadow-md">
+            <p class="text-xs font-semibold text-gray-600">Serving since</p>
+            <p class="text-2xl font-bold text-[#c4932a]">1990</p>
+          </div>
         </div>
-        <div
-          class="flex flex-col flex-wrap lg:py-6 -mb-10 lg:w-1/2 lg:pl-12 lg:text-left text-center"
-        >
-          <div class="flex flex-col mb-10 lg:items-start items-center">
-            <div
-              class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-red-100 text-[#b70213] mb-5"
-            >
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-6 h-6"
-                viewBox="0 0 24 24"
-              >
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+
+        <!-- Feature list -->
+        <div class="space-y-3">
+          <div
+            v-for="feature in features"
+            :key="feature.title"
+            class="group flex gap-4 p-4 rounded-xl hover:bg-[#eef2f9] transition-all duration-200 cursor-default"
+          >
+            <div class="flex-shrink-0 w-10 h-10 inline-flex items-center justify-center rounded-xl bg-[#dce8f7] text-[#1b3764] group-hover:bg-[#1b3764] group-hover:text-white transition-colors duration-200">
+              <svg v-if="feature.key === 'worship'" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+              <svg v-else-if="feature.key === 'outreach'" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />
+              </svg>
+              <svg v-else fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
               </svg>
             </div>
-            <div class="flex-grow">
-              <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-                Worship Services
-              </h2>
-              <p class="leading-relaxed text-base">
-                Join us for uplifting worship services that bring us closer to God and inspire spiritual growth through prayer, song, and sermons.
-              </p>
-              <a class="mt-3 text-[#b70213] inline-flex items-center"
-                >Learn More
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="w-4 h-4 ml-2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div class="flex flex-col mb-10 lg:items-start items-center">
-            <div
-              class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-red-100 text-[#b70213] mb-5"
-            >
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-6 h-6"
-                viewBox="0 0 24 24"
+            <div>
+              <h3 class="text-gray-900 text-base font-bold mb-0.5">{{ feature.title }}</h3>
+              <p class="text-gray-500 text-sm leading-relaxed">{{ feature.description }}</p>
+              <NuxtLink
+                :to="feature.link"
+                class="mt-1.5 inline-flex items-center gap-1 text-sm font-semibold text-[#1b3764] hover:gap-2 transition-all duration-200"
               >
-                <circle cx="6" cy="6" r="3"></circle>
-                <circle cx="6" cy="18" r="3"></circle>
-                <path
-                  d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"
-                ></path>
-              </svg>
-            </div>
-            <div class="flex-grow">
-              <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-                Community Outreach
-              </h2>
-              <p class="leading-relaxed text-base">
-                We extend God’s love through charity programs, support for the less fortunate, and initiatives that uplift the community spiritually and socially.
-              </p>
-              <a class="mt-3 text-[#b70213] inline-flex items-center"
-                >Learn More
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="w-4 h-4 ml-2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                Learn More
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
-              </a>
-            </div>
-          </div>
-          <div class="flex flex-col mb-10 lg:items-start items-center">
-            <div
-              class="w-12 h-12 inline-flex items-center justify-center rounded-full bg-red-100 text-[#b70213] mb-5"
-            >
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                class="w-6 h-6"
-                viewBox="0 0 24 24"
-              >
-                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
-            </div>
-            <div class="flex-grow">
-              <h2 class="text-gray-900 text-lg title-font font-medium mb-3">
-                Youth and Family Programs
-              </h2>
-              <p class="leading-relaxed text-base">
-                Programs dedicated to nurturing the faith and spiritual growth of families and empowering the next generation to live purposefully in Christ.
-              </p>
-              <a class="mt-3 text-[#b70213] inline-flex items-center"
-                >Learn More
-                <svg
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  class="w-4 h-4 ml-2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7"></path>
-                </svg>
-              </a>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -145,3 +65,16 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+const onImgError = (e: Event) => {
+  const img = e.target as HTMLImageElement;
+  img.src = '/assets/images/Council.jpg';
+};
+
+const features = [
+  { key: 'worship', title: 'Worship Services', description: 'Uplifting Sunday services that bring us closer to God through prayer, song, and the Word.', link: '/ministries' },
+  { key: 'outreach', title: 'Community Outreach', description: "Extending God's love through charity programs that uplift the community spiritually and socially.", link: '/serve' },
+  { key: 'youth', title: 'Youth & Family Programs', description: 'Nurturing the faith of families and empowering the next generation to live purposefully in Christ.', link: '/ministries' },
+];
+</script>

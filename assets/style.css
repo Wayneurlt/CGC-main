@@ -1,19 +1,91 @@
+/* ─── Church Brand CSS Variables ────────────────────────────────────────── */
+:root {
+  --church-navy:       #1b3764;
+  --church-navy-dark:  #0f2347;
+  --church-navy-light: #eef2f9;
+  --church-gold:       #c4932a;
+  --church-gold-dark:  #a07520;
+  --church-dark:       #0d1f3c;
+  --church-bg-warm:    #faf8f4;
+}
+
+/* ─── Base ────────────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
 body {
-  @apply  text-black;
-  font-family: "Nunito", sans-serif;
+  @apply text-gray-900;
+  font-family: "Nunito Sans", "Nunito", sans-serif;
+  background-color: #ffffff;
 }
 
-.source-serif {
-  font-family: "Nunito", sans-serif;
+/* ─── Warm alternating section backgrounds ───────────────────────────────── */
+/* Sections that use bg-gray-50 get a warmer parchment tint */
+.section-warm { background-color: var(--church-bg-warm); }
+
+/* ─── Navbar transition ─────────────────────────────────────────────────── */
+.nav-scrolled { @apply bg-white shadow-md; }
+
+/* ─── Mobile menu transition ────────────────────────────────────────────── */
+.mobile-menu-enter-active,
+.mobile-menu-leave-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.mobile-menu-enter-from,
+.mobile-menu-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
 }
 
-.color-select {
-  cursor: pointer;
+/* ─── Page transitions ───────────────────────────────────────────────────── */
+.page-enter-active,
+.page-leave-active { transition: opacity 0.15s ease; }
+.page-enter-from,
+.page-leave-to { opacity: 0; }
+
+/* ─── Notivue ────────────────────────────────────────────────────────────── */
+.notivue-notification { font-weight: bold; }
+
+/* ─── Spinner loader ─────────────────────────────────────────────────────── */
+.loader {
+  width: 22px;
+  height: 22px;
+  border: 3px solid rgba(255,255,255,0.4);
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 0.8s linear infinite;
 }
-.color-select:hover p {
-  display: block;
-  transition: all 0.5s ease-in-out;
+@keyframes rotation {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
+
+/* ─── Auto-scroll carousel ──────────────────────────────────────────────── */
+.carousel-container { overflow: hidden; width: 100%; }
+.carousel-container:hover .carousel-track { animation-play-state: paused; }
+
+/* ─── Hide scrollbar ──────────────────────────────────────────────────────  */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* ─── Line clamp ─────────────────────────────────────────────────────────── */
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* ─── Gold accent text utility ───────────────────────────────────────────── */
+.text-gold  { color: var(--church-gold); }
+.bg-gold    { background-color: var(--church-gold); }
+.text-navy  { color: var(--church-navy); }
+.bg-navy    { background-color: var(--church-navy); }
+
+/* ─── Color picker tooltip (legacy) ──────────────────────────────────────── */
+.color-select { cursor: pointer; }
+.color-select:hover p { display: block; transition: all 0.5s ease-in-out; }
 .color-select p {
   display: none;
   position: absolute;
@@ -28,26 +100,3 @@ body {
   z-index: 1;
   white-space: nowrap;
 }
-.notivue-notification {
-  font-weight: bold;
-}
-
-.loader {
-  width: 30px;
-  height: 30px;
-  border: 3px solid #FFF;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-  }
-
-  @keyframes rotation {
-  0% {
-      transform: rotate(0deg);
-  }
-  100% {
-      transform: rotate(360deg);
-  }
-  } 

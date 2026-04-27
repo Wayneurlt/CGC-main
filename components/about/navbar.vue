@@ -1,78 +1,94 @@
 <template>
-  <nav
-    :class="[ 
-      'px-8 py-3 xl:py-4 fixed top-0 w-full z-[1000]',
-      {
-        'dark:bg-white': isScrolled,
-        'bg-white': !isScrolled,
-      },
-    ]"
-  >
-    <div class="flex justify-between w-full place-items-center">
-      <!-- Enlarged Logo on the Left -->
-      <NuxtLink to="/" class="flex items-center">
-        <ClientOnly>
+  <nav class="fixed top-0 w-full z-[1000] bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14 lg:h-16">
+        <!-- Logo -->
+        <NuxtLink to="/" class="flex items-center flex-shrink-0">
           <img
-            class="h-12 lg:h-24 xl:h-18 2xl:h-21 w-auto"
-            src="/public/logo.png"
-            alt="Logo"
+            class="h-10 lg:h-14 w-auto"
+            src="/logo.png"
+            alt="Growth Centre Church"
           />
-        </ClientOnly>
-      </NuxtLink>
+        </NuxtLink>
 
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center gap-1 lg:gap-2">
+          <NuxtLink
+            v-for="link in navLinks"
+            :key="link.to"
+            :to="link.to"
+            class="px-3 py-2 rounded-md text-sm font-semibold text-gray-700 hover:text-[#1b3764] hover:bg-[#eef2f9] transition-colors duration-200"
+            active-class="!text-[#1b3764] !bg-[#eef2f9]"
+          >
+            {{ link.label }}
+          </NuxtLink>
+          <NuxtLink
+            to="/join"
+            class="ml-2 px-5 py-2.5 bg-[#1b3764] text-white text-sm font-semibold rounded-full transition-all duration-200 hover:bg-[#0f2347] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#1b3764] focus:ring-offset-2 whitespace-nowrap"
+          >
+            Join Us
+          </NuxtLink>
+        </div>
 
-
-
-      <div class="flex items-center gap-5">
-        <NuxtLink 
-    to="/serve" 
-    class="font-semibold transition-transform transform hover:scale-105"
-  >
-    Serve
-  </NuxtLink>
-        <NuxtLink 
-    to="/about" 
-    class="font-semibold transition-transform transform hover:scale-105"
-  >
-    About Us
-  </NuxtLink>
-  <NuxtLink
-    to="/join"
-    class="grid place-items-center px-4 py-2 bg-[#b70213] text-white rounded-full focus:outline-none focus:ring-4 focus:ring-[#b70213] whitespace-nowrap transition-all transform hover:scale-105"
-  >
-    Join Us
-  </NuxtLink>
-</div>
-
+        <!-- Mobile Hamburger -->
+        <button
+          @click="isMenuOpen = !isMenuOpen"
+          class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors duration-200"
+          aria-label="Toggle navigation menu"
+          :aria-expanded="isMenuOpen"
+        >
+          <svg v-if="!isMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
     </div>
+
+    <!-- Mobile Menu -->
+    <Transition name="mobile-menu">
+      <div
+        v-if="isMenuOpen"
+        class="md:hidden bg-white border-t border-gray-100 shadow-lg"
+      >
+        <div class="px-4 py-3 space-y-1">
+          <NuxtLink
+            v-for="link in navLinks"
+            :key="link.to"
+            :to="link.to"
+            @click="isMenuOpen = false"
+            class="block px-4 py-3 rounded-lg text-gray-700 font-semibold hover:bg-[#eef2f9] hover:text-[#1b3764] transition-colors duration-200"
+            active-class="!bg-[#eef2f9] !text-[#1b3764]"
+          >
+            {{ link.label }}
+          </NuxtLink>
+          <NuxtLink
+            to="/join"
+            @click="isMenuOpen = false"
+            class="block mt-2 px-4 py-3 bg-[#1b3764] text-white text-center font-semibold rounded-lg hover:bg-[#0f2347] transition-colors duration-200"
+          >
+            Join Us
+          </NuxtLink>
+        </div>
+      </div>
+    </Transition>
   </nav>
 </template>
 
 <script setup lang="ts">
-let isScrolled = ref(false);
+const isMenuOpen = ref(false);
 
-onMounted(() => {
-  window.addEventListener("scroll", () => {
-    isScrolled.value = window.scrollY > 0;
-  });
-});
+const navLinks = [
+  { to: '/know', label: 'Know God' },
+  { to: '/ministries', label: 'Ministries' },
+  { to: '/serve', label: 'Serve' },
+  { to: '/about', label: 'About Us' },
+];
 
-const colorMode = useColorMode();
-const isDark = computed({
-  get() {
-    return colorMode.value === "dark";
-  },
-  set() {
-    colorMode.preference = colorMode.value === "dark" ? "light" : "dark";
-  },
+const route = useRoute();
+watch(() => route.path, () => {
+  isMenuOpen.value = false;
 });
 </script>
-
-<style>
-.item-hover:hover .move-left {
-  transform: translateX(5px);
-  opacity: 1;
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
-  cursor: pointer;
-}
-</style>

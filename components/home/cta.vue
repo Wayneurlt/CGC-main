@@ -1,38 +1,52 @@
 <template>
-  <section class="relative overflow-hidden bg-black/50">
-    <!-- Background Image -->
+  <section class="relative py-14 overflow-hidden">
     <img
       src="/assets/images/4-Bible.jpeg"
-      alt="Christian Growth Center Church"
-      class="absolute inset-0 object-cover w-full h-full"
+      alt="Open Bible"
+      class="absolute inset-0 w-full h-full object-cover"
+      @error="onImgError"
     />
-    <!-- Content Overlay -->
-    <div class="relative p-8 md:p-12 lg:px-16 lg:py-24 bg-black/50">
-      <div class="text-center">
-        <h2 class="text-2xl font-bold text-white sm:text-3xl md:text-5xl">
-          Worship, Fellowship, and Grow in Faith!
-        </h2>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0d1f3c]/80 to-[#0d1f3c]/90"></div>
 
-        <p class="max-w-lg mx-auto text-white/90 md:mt-6 md:text-lg md:leading-relaxed">
-          Join the Christian Growth Center Church as we grow together in faith, love, and service to the Lord. Together, we build a strong community rooted in Christ.
-        </p>
+    <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+        Worship, Fellowship, and<br class="hidden sm:block" /> Grow in Faith
+      </h2>
+      <p class="text-base text-white/80 leading-relaxed mb-7 max-w-xl mx-auto">
+        Join Growth Centre Church — a strong community rooted in Christ, serving together since 1990.
+      </p>
 
-        <div class="mt-4 sm:mt-8">
-          <a
-            href="/join"
-            class="inline-block rounded-full bg-[#b70213] px-12 py-3 text-sm font-medium text-white transition hover:bg-black focus:outline-none focus:ring focus:ring-green-400"
-          >
-            Become a Member
-          </a>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center mb-10">
+        <NuxtLink to="/join" class="inline-flex items-center justify-center px-7 py-3 text-sm font-semibold text-white bg-[#1b3764] rounded-lg hover:bg-[#0f2347] transition-all duration-200 hover:shadow-lg">
+          Become a Member
+        </NuxtLink>
+        <NuxtLink to="/know" class="inline-flex items-center justify-center px-7 py-3 text-sm font-semibold text-white border border-white/40 rounded-lg hover:bg-white hover:text-[#0d1f3c] transition-all duration-200">
+          Know God
+        </NuxtLink>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-6 max-w-sm mx-auto border-t border-white/20 pt-7">
+        <div>
+          <p class="text-2xl font-bold text-[#c4932a]">35+</p>
+          <p class="text-white/60 text-xs mt-0.5">Years</p>
+        </div>
+        <div>
+          <p class="text-2xl font-bold text-[#c4932a]">4+</p>
+          <p class="text-white/60 text-xs mt-0.5">Branches</p>
+        </div>
+        <div>
+          <p class="text-2xl font-bold text-[#c4932a]">10+</p>
+          <p class="text-white/60 text-xs mt-0.5">Ministries</p>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<style>
-/* Ensure full section styling for the image */
-section img {
-  z-index: -1;
-}
-</style>
+<script setup lang="ts">
+const onImgError = (e: Event) => {
+  const img = e.target as HTMLImageElement;
+  img.src = 'https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=1600&auto=format&fit=crop&q=80';
+};
+</script>
